@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+    color: white;
+    background: oklch(20.8% 0.042 265.755);
+}
+.footer-item {position: relative;}
+.footer-item::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%; /* Если нужно растянуть на всю ширину */
+    height: 2px;
+    background: yellow;
+}
