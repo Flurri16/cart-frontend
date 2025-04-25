@@ -17,7 +17,7 @@ const LoginPage = () => {
   }
     return (
         <div className="flex justify-center items-center mt-[200px]">
-          <form onSubmit={e => e.preventDefault()} className="w-full max-w-xs bg-white bg-opacity-35 p-6 rounded shadow-md">
+          <form onSubmit={e => e.preventDefault()} className="w-full max-w-xs  bg-slate-700  p-6 rounded shadow-md">
           <h1 className='text-2xl text-black text-center pb-5'>Authorization</h1>
             <input 
               type="text" 
@@ -39,11 +39,11 @@ const LoginPage = () => {
             <button 
               type="submit" 
               onClick={handlerSubmit}
-              className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              className="p-2 bg-yellow-500 text-lg font-semibold text-white rounded hover:bg-yellow-400 transition"
             >
               Login
             </button>
-            <Link to='/register' className='bg-gray-300'>Don't have an account?</Link>
+            <Link to='/register' className='text-base font-semibold'>Don't have an account?</Link>
             </div>
           </form>
         </div>

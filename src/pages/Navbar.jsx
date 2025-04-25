@@ -7,25 +7,22 @@ export default function Navbar() {
     return (
         <div>
             <nav className='flex justify-between py-5 px-5 items-center bg-slate-800'>
-                <div className="flex items-center text-white">
-                    <div className="text-white text-3xl">Bambuk</div>
-                    <div className="text-white pl-5">{nickName}</div>
+            <div className="text-white text-3xl">Bambuk</div>
 
-                </div>
                 {
                     isAuth ? 
                     <div className="">
                         <ul className='flex gap-8'>
-                            <li><NavLink to="/" className="py-2 px-4 bg-slate-400">Main</NavLink></li>
-                            <li><NavLink to="/store" className="py-2 px-4 bg-slate-400">Store</NavLink></li>
-                            <li><NavLink to="/profile" className="py-2 px-4 bg-slate-400">My profile</NavLink></li>
+                            <li><NavLink to="/" className="py-2 px-4 hover:bg-slate-700">Main</NavLink></li>
+                            <li><NavLink to="/store" className="py-2 px-4 hover:bg-slate-700">Store</NavLink></li>
+                            <li><NavLink to="/profile" className="py-2 px-4 hover:bg-slate-700">My profile</NavLink></li>
                         </ul>
                     </div> : null
                 }
                 <ul>
                     {
                         isAuth ?
-                            <li><NavLink className='text-white text-2xl bg-yellow-400 py-2 px-4 bg-opacity-90 hover:bg-red-500' to='/login'>Log out</NavLink></li> :
+                            <div className='flex items-center'><h1>{nickName}</h1><li><NavLink className='text-white text-2xl bg-yellow-400 py-2 px-4 ml-4 bg-opacity-90 hover:bg-red-500'>Log out</NavLink></li></div> :
                             <li><NavLink className='text-white text-2xl bg-yellow-400 py-2 px-4 bg-opacity-90 hover:bg-lime-500' to='/login'>Login</NavLink></li>
                     }
                 </ul>

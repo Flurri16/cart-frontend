@@ -13,8 +13,8 @@ const RegisterPage = () => {
   }
     return (
         <div className="flex justify-center items-center mt-[200px]">
-          <form className="w-full max-w-xs  bg-white bg-opacity-35  p-6 rounded shadow-md" onSubmit={e => e.preventDefault()}>
-          <h1 className='text-2xl text-black text-center pb-5'>Registration</h1>
+          <form className="w-full max-w-xs  bg-slate-700  p-6 rounded shadow-md" onSubmit={e => e.preventDefault()}>
+          <h1 className='text-2xl text-white text-center pb-5'>Registration</h1>
             <input 
               type="text" 
               name="username" 
@@ -35,11 +35,11 @@ const RegisterPage = () => {
             <button 
               type="submit" 
               onClick={handleSubmit}
-              className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+              className="p-2 bg-yellow-500 text-lg font-semibold text-white rounded hover:bg-yellow-400 transition"
             >
               Register
             </button>
-            <Link to='/login' className='bg-gray-300'>Already have an account?</Link>
+            <Link to='/login' className='text-base font-semibold'>Already have an account?</Link>
             </div>
           </form>
         </div>

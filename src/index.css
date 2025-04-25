@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+    transition: .2s ease;
+}
 body {
     color: white;
     background: oklch(20.8% 0.042 265.755);
