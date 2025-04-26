@@ -18,7 +18,7 @@ const LoginPage = () => {
     return (
         <div className="flex justify-center items-center mt-[200px]">
           <form onSubmit={e => e.preventDefault()} className="w-full max-w-xs  bg-slate-700  p-6 rounded shadow-md">
-          <h1 className='text-2xl text-black text-center pb-5'>Authorization</h1>
+          <h1 className='text-2xl text-white text-center pb-5'>Authorization</h1>
             <input 
               type="text" 
               value={username} 

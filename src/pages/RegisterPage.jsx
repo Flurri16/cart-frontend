@@ -1,16 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import {useDispatch, useSelector} from 'react-redux'
 import { Link } from 'react-router-dom';
+import { registerUser } from '../redux/authSlice';
+import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
+  const dispatch  = useDispatch()
+  const {message} = useSelector(state => state.auth)
   const handleSubmit = () => {
+    try {
+      dispatch (registerUser({email, password}))
+    } catch(err) {
+      console.log(err)
+    }
     setPassword('')
-    setUsername('')
+    setEmail('')
   }
+  useEffect(() => {
+    if(message) {
+      toast(message)
+      navigate('/store')
+    }
+    
+  })
     return (
         <div className="flex justify-center items-center mt-[200px]">
           <form className="w-full max-w-xs  bg-slate-700  p-6 rounded shadow-md" onSubmit={e => e.preventDefault()}>
@@ -18,10 +34,10 @@ const RegisterPage = () => {
             <input 
               type="text" 
               name="username" 
-              value={username} 
+              value={email} 
               placeholder="Username"
-              onChange={e => setUsername(e.target.value)} 
-              className="w-full mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onChange={e => setEmail(e.target.value)} 
+              className="w-full mb-4 p-2 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input 
               type="password" 
@@ -29,7 +45,7 @@ const RegisterPage = () => {
               value={password} 
               onChange={e => setPassword(e.target.value)} 
               placeholder="Password" 
-              className="w-full mb-4 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full mb-4 p-2 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <div className="flex justify-center gap-4 items-center">
             <button 
