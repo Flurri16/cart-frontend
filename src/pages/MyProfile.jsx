@@ -1,7 +1,8 @@
 import React from 'react'
-
+import {useSelector} from 'react-redux'
+import { isAuthInSlice } from '../redux/authSlice'
 export default function MyProfile() {
-    const isAuth = false
+    const isAuth = useSelector(isAuthInSlice)
   return (
     <div className='w-[80%] mx-auto'>
         {

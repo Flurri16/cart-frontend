@@ -10,7 +10,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch  = useDispatch()
-  const {message} = useSelector(state => state.auth)
+  const {message, isSuccess} = useSelector(state => state.auth)
   const handleSubmit = () => {
     try {
       dispatch (registerUser({email, password}))
@@ -23,6 +23,8 @@ const RegisterPage = () => {
   useEffect(() => {
     if(message) {
       toast(message)
+    }
+    if(isSuccess) {
       navigate('/store')
     }
     
@@ -35,7 +37,7 @@ const RegisterPage = () => {
               type="text" 
               name="username" 
               value={email} 
-              placeholder="Username"
+              placeholder="Email"
               onChange={e => setEmail(e.target.value)} 
               className="w-full mb-4 p-2 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
