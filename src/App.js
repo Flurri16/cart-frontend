@@ -10,6 +10,7 @@ import {ToastContainer} from 'react-toastify'
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getMe } from './redux/authSlice';
+import ItemPage from './pages/ItemPage';
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={<RegisterPage></RegisterPage>}></Route>
         <Route path='/profile' element={<MyProfile></MyProfile>}></Route>
         <Route path="/add" element={<AddProductPage></AddProductPage>}/>
+        <Route path="/items/:id" element={<ItemPage></ItemPage>}/>
       </Routes>
       <ToastContainer position="bottom-right"></ToastContainer>
     </Layout>

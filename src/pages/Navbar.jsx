@@ -8,7 +8,7 @@ export default function Navbar() {
     const isAuth = useSelector(isAuthInSlice)
     const {user} = useSelector(state => state.auth)
     const isAdmin = useSelector(state => state.auth.user)
-    console.log(user)
+
     const dispatch = useDispatch()
     const logoutHandler = () => {
         dispatch(logout())
