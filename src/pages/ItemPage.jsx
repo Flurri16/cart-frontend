@@ -54,7 +54,7 @@ export default function ItemPage() {
           <p className="text-gray-300 mb-6">{item.text}</p>
           <p className="text-yellow-400 text-3xl font-bold">{item.cost} ₽</p>
           {
-            isAdmin.email === 'admin@gmail.com' && (
+            isAdmin.email === 'admin' && (
               <div className="">
                 <button className='bg-red-600 py-2 px-4 rounded mt-3' onClick={removeHandler}>Delete</button>
               </div>

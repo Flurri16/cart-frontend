@@ -7,9 +7,9 @@ const initialState = {
     message: null,
     isSuccess: false,
 }
-export const registerUser = createAsyncThunk('auth/registerUser', async ({email, password}, {rejectWithValue}) => {
+export const registerUser = createAsyncThunk('auth/registerUser', async ({email, password, username}, {rejectWithValue}) => {
     try {
-        const {data} = await axiosConfig.post('/auth/register', {email, password})
+        const {data} = await axiosConfig.post('/auth/register', {email, password, username})
         if(data.token) localStorage.setItem('token', data.token)
         return data
     } catch(err) {

@@ -11,6 +11,9 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getMe } from './redux/authSlice';
 import ItemPage from './pages/ItemPage';
+import Success from './pages/Success'
+import Cancel from './pages/Cancel';
+import CheckoutForm from './pages/CheckoutForm';
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
@@ -26,6 +29,9 @@ function App() {
         <Route path='/profile' element={<MyProfile></MyProfile>}></Route>
         <Route path="/add" element={<AddProductPage></AddProductPage>}/>
         <Route path="/items/:id" element={<ItemPage></ItemPage>}/>
+        <Route path="/success" element={<Success></Success>}/>
+        <Route path="/cancel" element={<Cancel></Cancel>}/>
+        <Route path="/checkout" element={<CheckoutForm />} />
       </Routes>
       <ToastContainer position="bottom-right"></ToastContainer>
     </Layout>

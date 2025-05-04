@@ -14,7 +14,9 @@ export default function CartItem({ item }) {
       <div className="flex flex-col">
         <Link to={`/items/${item._id}`}>
           {item.imgUrl && (
-            <img src={`http://localhost:5000${item.imgUrl}`} className="rounded" alt="Item" />
+            <div className="flex justify-center">
+              <img src={`http://localhost:5000${item.imgUrl}`} className="rounded max-h-40 max-w-50" alt="Item" />
+            </div>
           )}
         </Link>
         <div className="">
@@ -23,12 +25,12 @@ export default function CartItem({ item }) {
             <p className="text-sm text-gray-300 mt-1">{item.text}</p>
           </Link>
           <div className="flex justify-between items-center mt-4">
-            <span className="text-yellow-400 font-bold">{item.cost} ₽</span>
+            <span className="text-yellow-400 font-bold">{item.cost} zł</span>
             <button 
               onClick={handleAddToCart} 
               className="bg-yellow-500 text-black px-3 py-1 rounded hover:bg-yellow-400"
             >
-              В корзину
+              Add to cart
             </button>
           </div>
         </div>

@@ -7,13 +7,14 @@ import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch  = useDispatch()
   const {message, isSuccess} = useSelector(state => state.auth)
   const handleSubmit = () => {
     try {
-      dispatch (registerUser({email, password}))
+      dispatch (registerUser({email, password, username}))
     } catch(err) {
       console.log(err)
     }
@@ -26,9 +27,9 @@ const RegisterPage = () => {
     }
     if(isSuccess) {
       navigate('/store')
+      toast(message)
     }
-    
-  })
+  }, [message, isSuccess])
     return (
         <div className="flex justify-center items-center mt-[200px]">
           <form className="w-full max-w-xs  bg-slate-700  p-6 rounded shadow-md" onSubmit={e => e.preventDefault()}>
@@ -36,6 +37,14 @@ const RegisterPage = () => {
             <input 
               type="text" 
               name="username" 
+              value={username} 
+              placeholder="Username"
+              onChange={e => setUsername(e.target.value)}
+              className="w-full mb-4 p-2 border border-gray-300 text-black rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <input 
+              type="text" 
+              name="email" 
               value={email} 
               placeholder="Email"
               onChange={e => setEmail(e.target.value)} 

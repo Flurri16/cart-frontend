@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 export default function Navbar() {
     const isAuth = useSelector(isAuthInSlice)
     const {user} = useSelector(state => state.auth)
-    const isAdmin = useSelector(state => state.auth.user)
 
     const dispatch = useDispatch()
     const logoutHandler = () => {
@@ -27,7 +26,7 @@ export default function Navbar() {
                             <li><NavLink to="/store" className="py-2 px-4 hover:bg-slate-700">Store</NavLink></li>
                             <li><NavLink to="/profile" className="py-2 px-4 hover:bg-slate-700">My profile</NavLink></li>
                             {
-                                isAdmin.email === 'admin@gmail.com' ? <li><NavLink to="/add" className="py-2 px-4 hover:bg-slate-700">Add</NavLink></li> : null
+                                user.email === 'admin' ? <li><NavLink to="/add" className="py-2 px-4 hover:bg-slate-700">Add</NavLink></li> : null
                             }
                         </ul>
                     </div> : null
@@ -35,7 +34,7 @@ export default function Navbar() {
                 <ul>
                     {
                         isAuth ?
-                            <div className='flex items-center'><h1>{user?.email}</h1><li><button onClick={logoutHandler} className='text-white text-2xl bg-yellow-400 py-2 px-4 ml-4 bg-opacity-90 hover:bg-red-500'>Log out</button></li></div> :
+                            <div className='flex items-center'><h1>{user?.username}</h1><li><button onClick={logoutHandler} className='text-white text-2xl bg-yellow-400 py-2 px-4 ml-4 bg-opacity-90 hover:bg-red-500'>Log out</button></li></div> :
                             <li><NavLink className='text-white text-2xl bg-yellow-400 py-2 px-4 bg-opacity-90 hover:bg-lime-500' to='/login'>Login</NavLink></li>
                     }
                 </ul>

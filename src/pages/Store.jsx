@@ -4,14 +4,19 @@ import NewItem from './NewItem'
 import { getAllItems } from '../redux/itemSlice'
 import { addToCart, removeFromCart } from '../redux/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
-
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 export default function Store() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const { items } = useSelector(state => state.items)
   const { user } = useSelector(state => state.auth)
   const { cartItems } = useSelector(state => state.cart)
   const [summ, setSumm] = useState(0)
 
+  const handleCheckout = async () => {
+  navigate('/checkout')
+  }
 useEffect(() => {
   const total = cartItems.reduce((summ, nextItem) => summ + nextItem.cost * nextItem.quantity, 0)
   setSumm(total)
@@ -26,15 +31,15 @@ useEffect(() => {
 
         {/* Левая колонка — Новинки */}
         <div className="bg-slate-700 p-4 rounded overflow-hidden">
-          <h2 className="text-lg font-semibold mb-4">Новинки</h2>
+          <h2 className="text-lg font-semibold mb-4">News:</h2>
           <NewItem />
           <NewItem />
         </div>
 
         {/* Центральная колонка — Товары */}
         <main>
-          <h2 className="text-2xl font-bold mb-6">Товары</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <h2 className="text-2xl font-bold mb-6">Goods:</h2>
+          <div className="grid grid-cols-4 gap-4">
             {items.map(item => (
               <CartItem key={item._id} item={item} />
             ))}
@@ -43,7 +48,7 @@ useEffect(() => {
 
         {/* Правая колонка — Корзина */}
         <div className="bg-slate-700 p-4 rounded">
-          <h2 className="text-lg font-semibold mb-4">Корзина</h2>
+          <h2 className="text-lg font-semibold mb-4">Your cart:</h2>
           {
             !user ? (
               <div>Login To see your cart.</div>
@@ -73,7 +78,7 @@ useEffect(() => {
                
                 {cartItems.length > 0 ?  <div className="">
                   <h1 className='text-2xl font-semibold py-3'>Summ: {summ} zł</h1> 
-                  <button className="bg-yellow-500 text-black px-3 py-1 rounded hover:bg-yellow-400">Pay</button>
+                  <button onClick={handleCheckout} className="bg-yellow-500 text-black px-3 py-1 rounded hover:bg-yellow-400">Pay</button>
                   </div> : null}
               </div>
             )

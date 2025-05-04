@@ -25,10 +25,10 @@ const LoginPage = () => {
       toast(message)
     }
     if(isSuccess) {
+      toast(message)
       navigate('/store')
     }
-    
-  })
+  }, [message, isSuccess])
     return (
         <div className="flex justify-center items-center mt-[200px]">
           <form onSubmit={e => e.preventDefault()} className="w-full max-w-xs  bg-slate-700  p-6 rounded shadow-md">
